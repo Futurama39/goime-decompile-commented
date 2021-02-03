@@ -1,5 +1,7 @@
 var goime = SharedObject.getLocal("goime2");
 function timeToText(f, g)
+//Looks like time is handled in some base unit and is converted to time format here
+//most probably for displaying the "your time section"
 {
    f = f * 20;
    var _loc2_ = [0,0,0,0,0,0,0,0,0];
@@ -59,8 +61,8 @@ else
 var music = new Sound(_root);
 music.setVolume(100);
 var sound = true;
-var sp = false;
-var qp = false;
+var sp = false; //Sound mute bool
+var qp = false; //Quality bool
 var hp = false;
 var mp = false;
 stop();

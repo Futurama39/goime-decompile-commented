@@ -5,7 +5,7 @@ function runGame()
    if(onob && guy._y < 512)
    {
       if(Key.isDown(32) || Key.isDown(38))
-      {
+      { //possible routines when jumping?
          if(paint.talk2._currentframe == 6)
          {
             paint.guy2.gotoAndPlay(1);
@@ -30,25 +30,26 @@ function runGame()
          moved = 0;
          if(law && (flashy._currentframe == 1 || flashy._currentframe >= 5))
          {
-            achget(427,talk && realx > 1210 && realx < 1365 && realy > 340 && realy < 480);
-            achget(490,Math.abs(realy - 850) <= 2 && realx <= -300 && paint.etalk._currentframe >= 2);
-            achget(112,realy >= -730 && realy <= -625 && realx >= -180 && realx <= 30);
-            achget(298,realx >= 1700 && realx <= 1775 && realy >= -775 && realy <= -690);
-            realx = 1730;
+            //routine if jumped and no jump law on?
+            achget(427,talk && realx > 1210 && realx < 1365 && realy > 340 && realy < 480); //human witnesses arrest
+            achget(490,Math.abs(realy - 850) <= 2 && realx <= -300 && paint.etalk._currentframe >= 2); //robot witnesses arrest
+            achget(112,realy >= -730 && realy <= -625 && realx >= -180 && realx <= 30); //send earthlings to jail
+            achget(298,realx >= 1700 && realx <= 1775 && realy >= -775 && realy <= -690); //commiting crime in jail
+            realx = 1730; //teleport to x and y coords of jail
             realy = -750;
             flashy.gotoAndPlay(2);
             flashy.white.gotoAndStop(3);
-            vy = 0;
-            timer9 = timer9 + 200;
-            land2.jail.gotoAndStop(1);
-            achget(296,true);
-            achget(312,guy.body._currentframe != 3);
+            vy = 0; //reset y velocity.. not the x one tho?
+            timer9 = timer9 + 200; //add 4s to the jail timer
+            land2.jail.gotoAndStop(1); 
+            achget(296,true); //criminal - get sent to jail
+            achget(312,guy.body._currentframe != 3); //colourful criminal
          }
          else
          {
             achget(402,realy >= -740 && realy <= -625 && realx >= -180 && realx <= 30 && a[401]);
-            achget(401,realy >= -740 && realy <= -625 && realx >= -180 && realx <= 30 && a[400]);
-            achget(400,realy >= -740 && realy <= -625 && realx >= -180 && realx <= 30);
+            achget(401,realy >= -740 && realy <= -625 && realx >= -180 && realx <= 30 && a[400]);   
+            achget(400,realy >= -740 && realy <= -625 && realx >= -180 && realx <= 30);             //jumping off the world and above it twice and thrice
          }
       }
       var _loc12_ = 0;
@@ -327,7 +328,7 @@ function runGame()
    paint.jailt.text = timeToText(timer9,3) + "s";
    if(timer9 > 0)
    {
-      achget(297,timer9 >= 500);
+      achget(297,timer9 >= 500); //ten second sentence
       achget(299,realx <= 1675 || realx >= 1800 || realy <= -775 || realy >= -690);
       timer9 = timer9 - framesToAdd;
       if(timer9 <= 0)
@@ -401,7 +402,7 @@ function runGame()
    achget(460,realx >= 652 && realx <= 700 && realy >= -900 && realy <= -850 && guy.body._currentframe != 3);
    achget(456,realx >= 575 && realx <= 700 && realy >= -802 && realy <= -773);
    achget(461,realx >= 570 && realx <= 605 && realy >= -782 && realy <= -775);
-   achget(362,realx <= -540 && realy >= 325 && ghost == 2);
+   achget(362,realx <= -540 && realy >= 325 && ghost == 2); //haunted store
    if(ghost == 2)
    {
       if(realy <= -890)
@@ -416,7 +417,7 @@ function runGame()
    if(ghost == 2)
    {
       timer6 = 0;
-      achget(115,realx < -425 && realx > -850 && realy > -825 && realy < -50);
+      achget(115,realx < -425 && realx > -850 && realy > -825 && realy < -50); //haunted building
    }
    if(paint.test._currentframe == 1)
    {
@@ -1345,11 +1346,11 @@ function runGame()
       achget(435,a[123] && a[144]);
       achget(430,a[220] && a[235]);
       achget(431,a[221] && a[236] && a[226]);
-      achget(397,realy >= -730 && realy <= -625 && realx >= -180 && realx <= 30 && onob);
-      achget(399,realy >= -730 && realy <= -625 && realx >= -180 && realx <= 30 && onob && a[395]);
+      achget(397,realy >= -730 && realy <= -625 && realx >= -180 && realx <= 30 && onob); //walking on earth
+      achget(399,realy >= -730 && realy <= -625 && realx >= -180 && realx <= 30 && onob && a[395]); //walking on recreated earth
       achget(32,realy < 200);
-      achget(33,Math.abs(realy) <= 2 && realx >= 0 && realx <= 50 && onob);
-      achget(36,realx < 660 && realx > 590 && Math.abs(realy - 200) < 2 && onob);
+      achget(33,Math.abs(realy) <= 2 && realx >= 0 && realx <= 50 && onob); //red region summit
+      achget(36,realx < 660 && realx > 590 && Math.abs(realy - 200) < 2 && onob); //succeeding in orange
       achget(158,realx < 1490 && realx > 1470 && realy > -480 && realy < -470);
       achget(188,realx >= -340 && realx <= -215 && realy >= 110 && realy <= 170);
       achget(279,timer8 >= 150);
@@ -1478,7 +1479,7 @@ function runGame()
          {
             paint.talk.gotoAndStop(2);
             paint.guy.gotoAndPlay(1);
-            achget(126,true);
+            achget(126,true); //i don't want to talk
          }
          talk = false;
       }
@@ -1895,7 +1896,7 @@ function runGame()
       timer5 = timer5 + framesToAdd;
    }
    timer10 = timer10 + framesToAdd;
-   achget(390,timer10 > 3000);
+   achget(390,timer10 > 3000); //unemployed, presumably timer resets when coin is collected from the coin func
    if(std.length > achesSeen)
    {
       _loc7_ = 1;
@@ -1992,14 +1993,14 @@ function runGame()
       {
          if(Math.abs(realy - (475 + _loc7_ * 75)) <= 2 && realx >= _loc7_ % 2 * 425 - 1025 && realx <= _loc7_ % 2 * 425 - 975)
          {
-            if(numon2 != 10 + _loc7_)
+            if(numon2 != 10 + _loc7_) //PROBABLY: if clause is after succesfully buying something from the shop
             {
                land["buy" + _loc7_].gotoAndStop(16);
                land["buyt" + _loc7_].gotoAndStop(3);
                coins2 = coins2 - prices[_loc7_ - 1];
                bought[_loc7_ - 1] = true;
-               buyings++;
-               achget(362 + buyings,true);
+               buyings++; //var used for ach 363-367 for the buy 1 - 5 things 
+               achget(362 + buyings,true); //here buyings triggers 
                achget(367 + prices[_loc7_ - 1],true);
                var _loc3_ = 1;
                while(_loc3_ <= 5)
@@ -2087,7 +2088,7 @@ function runGame()
             cameray = _loc8_ + realy;
             flashy.gotoAndPlay(2);
             flashy.white.gotoAndStop(4);
-            achget(163,ghost == 2);
+            achget(163,ghost == 2); //Ghosts in the portal
             achget(164,guy.body._currentframe != 3);
             if(achget(243 + Math.ceil(_loc7_ / 2),true))
             {
@@ -2322,14 +2323,14 @@ function increaseY(amount)
 {
    updateLandGuyPosition();
    realy = realy + amount;
-   if(ghost == 0)
+   if(ghost == 0) //i presume that jumping while ghosted is judged impossible hence no else clause?
    {
-      if(onob)
-      {
-         vy = 0;
-         if(!standingOnLand(smallestUnit,0))
+      if(onob) 
+      { //throughout it seems that the 0.2 smallestUnit is a distance tolerance to accept standing on land as to accomodate slight imperfections in the engine
+         vy = 0; //if on ground than make it impossible to fall thru it
+         if(!standingOnLand(smallestUnit,0)) //smallestUnit defined by frame4 as 0.2
          {
-            onob = false;
+            onob = false; //plausible check for things like falling off a ledge and situations where you leave being on ground by running out of ground
          }
          else
          {
@@ -2341,12 +2342,12 @@ function increaseY(amount)
             }
          }
       }
-      else if(vy > 0)
-      {
+      else if(vy > 0) 
+      { //check ran if player has vertical velocity
          if(standingOnLand(0,0))
-         {
-            onob = true;
-            achget(81,vy > 30);
+         { //routine for when player lands from a jump
+            onob = true; 
+            achget(81,vy > 30); //fatal fall not so fatal
             vy = 0;
             _loc2_ = 0;
             while(standingOnLand(- smallestUnit,0) && _loc2_ < 40)
@@ -2357,8 +2358,8 @@ function increaseY(amount)
          }
       }
       else if(vy < 0 && !standingOnLand(0,0) && standingOnLand(-20,0) && ghost == 0)
-      {
-         achget(284,vy < -11.5);
+      { //ran if there is no space above you to jump
+         achget(284,vy < -11.5); //jump fail
          vy = Math.abs(vy * 0.4);
          _loc2_ = 0;
          while(standingOnLand(-20,0) && _loc2_ < 40)
@@ -2366,16 +2367,16 @@ function increaseY(amount)
             realy = realy + smallestUnit;
             _loc2_ = _loc2_ + 1;
          }
-         achget(31,true);
+         achget(31,true); //beware of the ceiling
          var _loc1_ = 1;
          while(_loc1_ <= 3)
          {
             if(Math.abs(realy + 380) <= 10 && realx >= -700 + 50 * _loc1_ && realx <= -675 + 50 * _loc1_ && land["block" + _loc1_].square._currentframe == 1)
-            {
+            { //colur block achievements?
                if(land["block" + _loc1_]._currentframe == 3)
-               {
+               {//block._currentframe refers to the colour of the colour block
                   land["block" + _loc1_].gotoAndStop(1);
-                  achget(341,true);
+                  achget(341,true); //cycle of life
                   achget(448,true);
                }
                else
@@ -2386,7 +2387,7 @@ function increaseY(amount)
                }
                land["block" + _loc1_].square.gotoAndPlay(2);
                hits++;
-               achget(335 + hits,hits <= 5);
+               achget(335 + hits,hits <= 5); //336-340 for hitting colour blocks
                achget(342,land.block1._currentframe == 2 && land.block2._currentframe == 2 && land.block3._currentframe == 2);
                achget(343,land.block1._currentframe == 3 && land.block2._currentframe == 3 && land.block3._currentframe == 3);
                achget(344,land.block1._currentframe != land.block2._currentframe && land.block1._currentframe != land.block3._currentframe && land.block2._currentframe != land.block3._currentframe);

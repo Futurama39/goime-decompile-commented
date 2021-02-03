@@ -4,7 +4,7 @@ var vx = 0;
 var vy = 0;
 var ox = 0;
 var oy = 0;
-var onob = false;
+var onob = false; //so far seems to be a bol whether player is on the ground currently
 var onoby = false;
 var realonob = false;
 var pan = false;
@@ -21,6 +21,8 @@ while(i < 500)
    i++;
 }
 function achget(num, con)
+//con is a secondary required argument, sometimes a key being pressed in conditions, can be initialized with "true" like from the shower sprite
+//num provides info as to what achievement to unlock
 {
    if(!a[num] && con)
    {
@@ -63,11 +65,12 @@ function updateLandGuyPosition()
    }
 }
 function standingOnLand(offset, type)
-{
+{   //from looking at frame 5 it looks like func is always initialized with type = 0
    updateLandGuyPosition();
    if(type == 0)
    {
       return land2.hitTest(realx - GUY_WIDTH,realy + offset,true) || land2.hitTest(realx,realy + offset,true) || land2.hitTest(realx + GUY_WIDTH,realy + offset,true);
+      //there are three tests, all against 
    }
    if(type == -1)
    {
@@ -213,7 +216,7 @@ function processLeftRightPresses()
    }
    if(Key.isDown(37) && guy._y < 512)
    {
-      achget(2,true);
+      achget(2,true); //To the left!
       vx = vx - _loc1_;
       if(vx < 0)
       {
@@ -315,8 +318,8 @@ function die(wasPink)
    }
    achget(403,law);
 }
-if(goime.data.timer == undefined || timer <= 0 && timer != undefined)
-{
+if(goime.data.timer == undefined || timer <= 0 && timer != undefined) 
+{//runs when new game and no save game present
    var testtimes = 0;
    var unlock = 0;
    var a = new Array(500);
@@ -352,8 +355,8 @@ if(goime.data.timer == undefined || timer <= 0 && timer != undefined)
    var timer6 = 0;
    var timer7 = 0;
    var timer8 = 0;
-   var timer9 = 0;
-   var timer10 = 0;
+   var timer9 = 0;  
+   var timer10 = 0; //Unemployed timer for #390
    var timer11 = 0;
    var ghosts = 0;
    var acht = 0;
@@ -392,12 +395,12 @@ if(goime.data.timer == undefined || timer <= 0 && timer != undefined)
    var std = new Array(0);
 }
 else
-{
+{// script to run when continuing a save
    guy.body.gotoAndStop(goime.data.colored);
    var testtimes = goime.data.testtimes;
    achesSeen = goime.data.achesSeen;
    var unlock = goime.data.unlock;
-   var a = new Array(500);
+   var a = new Array(500); //Achievement arraty in which savedata is loaded into
    var i = 0;
    while(i < 500)
    {
@@ -522,8 +525,8 @@ else
    {
       land.out1.gotoAndStop(33);
    }
-   achget(351,true);
-   achget(352,true);
+   achget(351,true); //Time to say goodbye
+   achget(352,true); //Returning Champion
 }
 land2._visible = false;
 land.l1left.cacheAsBitmap = true;
@@ -574,7 +577,7 @@ var shakeLeft = True;
 var shakeCount = 0;
 var whipTimer = 0;
 var whipCount = 0;
-var smallestUnit = 0.2;
+var smallestUnit = 0.2; //used in frame 5 for the standingOnGround func
 var moveSpeed = 1;
 var pressedShift = false;
 flashy._visible = true;
