@@ -297,9 +297,9 @@ function runGame()
    {
       die(false);
    }
-   achget(38,timer2 > 1500);
-   achget(37,timer2 > 500);
-   achget(39,timer3 >= 50);
+   achget(38,timer2 > 1500);  //Survive and thrive
+   achget(37,timer2 > 500); 
+   achget(39,timer3 >= 50); //Airborne
    if(mouse == 3)
    {
       achget(22,true);
@@ -317,7 +317,7 @@ function runGame()
    achget(65,acht >= 499);
    if(realx >= 900 && realx <= 1550 && realy >= -1175 && realy <= -925)
    {
-      achget(273,true);
+      achget(273,true); //eek invisible walls - enter the invis area
       if(ghost == 2)
       {
          ghost = 1;
@@ -1083,7 +1083,7 @@ function runGame()
             av[0] = (av[4] - land.arcade.p2._x) / 5 + Math.random() - 0.5;
             achget(216,true);
          }
-         achget(217,timer7 >= 400);
+         achget(217,timer7 >= 400); //rally
          if(Math.random() > 0.5)
          {
             if(land.arcade.p1._x < av[4] - 5)
@@ -1353,7 +1353,7 @@ function runGame()
       achget(36,realx < 660 && realx > 590 && Math.abs(realy - 200) < 2 && onob); //succeeding in orange
       achget(158,realx < 1490 && realx > 1470 && realy > -480 && realy < -470);
       achget(188,realx >= -340 && realx <= -215 && realy >= 110 && realy <= 170);
-      achget(279,timer8 >= 150);
+      achget(279,timer8 >= 150); //these three are invis area time things
       achget(280,timer8 >= 250);
       achget(281,timer8 >= 500);
       achget(274,realx >= 1125 && realx <= 1200 && Math.abs(realy + 925) <= 2);
@@ -1432,16 +1432,16 @@ function runGame()
       {
          ori = 3;
       }
-      if(realx > 1275 && realx < 1325 && realy > -310 && realy < -245 && timer6 >= 6)
+      if(realx > 1275 && realx < 1325 && realy > -310 && realy < -245 && timer6 >= 6) //driver code for when the end button is pressed and things happen
       {
-         achget(149,true);
+         achget(149,true); //end presser - marathon
          if(ori == 3)
          {
             land.rend.gotoAndPlay(2);
             laps++;
-            achget(210,timer6 < 350);
-            achget(153,timer6 < 300);
-            achget(154,timer6 >= 500);
+            achget(210,timer6 < 350); //five second rule
+            achget(153,timer6 < 300); //sub six time
+            achget(154,timer6 >= 500); //slow double digit time
          }
          ori = 2;
       }
@@ -1690,10 +1690,10 @@ function runGame()
       pressedShift = false;
    }
    guy.ring._visible = moveSpeed <= 0.5;
-   achget(113,colnum >= 4);
-   achget(108,colnum >= 8);
+   achget(113,colnum >= 4); //half of the rainbow
+   achget(108,colnum >= 8); //ultimate painter
    paint.colnum.text = colnum + "/8";
-   achget(88,timer5 > 25);
+   achget(88,timer5 > 25); //chain reaction 2 and onwards
    achget(89,timer5 > 50);
    achget(90,timer5 > 75);
    achget(91,timer5 > 100);
@@ -1772,7 +1772,7 @@ function runGame()
       timer1 = 0;
    }
    achget(25,timer1 > 250);
-   achget(41,timer4 > 500);
+   achget(41,timer4 > 500); //Uneventful
    boxy.acht.text = acht;
    boxy.coins2.text = coins2;
    if(acht / 5 == Math.round(acht / 5))
@@ -1884,7 +1884,8 @@ function runGame()
    timer2 = timer2 + framesToAdd;
    if(onob)
    {
-      timer3 = 0;
+      timer3 = 0; //reset on ground timer
+
    }
    else
    {
